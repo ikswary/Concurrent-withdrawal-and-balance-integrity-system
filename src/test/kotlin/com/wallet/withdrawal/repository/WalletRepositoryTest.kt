@@ -5,19 +5,21 @@ import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
+import org.springframework.test.context.ActiveProfiles
 import java.math.BigDecimal
 
 /**
  * WalletRepository 단위 테스트
  */
 @DataJpaTest
+@ActiveProfiles("test")
 class WalletRepositoryTest {
 
     @Autowired
     private lateinit var walletRepository: WalletRepository
 
     @Test
-    fun `Wallet 저장 및 조회 테스트`() {
+    fun `should save and find wallet`() {
         // given
         val wallet = Wallet(
             balance = BigDecimal("1000.00")
@@ -34,7 +36,7 @@ class WalletRepositoryTest {
     }
 
     @Test
-    fun `Wallet 업데이트 테스트`() {
+    fun `should update wallet balance`() {
         // given
         val wallet = Wallet(
             balance = BigDecimal("1000.00")
@@ -51,7 +53,7 @@ class WalletRepositoryTest {
     }
 
     @Test
-    fun `Wallet 삭제 테스트`() {
+    fun `should delete wallet`() {
         // given
         val wallet = Wallet(
             balance = BigDecimal("1000.00")
