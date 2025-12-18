@@ -1,5 +1,6 @@
 package com.wallet.withdrawal.domain
 
+import com.wallet.withdrawal.domain.vo.Money
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import java.math.BigDecimal
@@ -12,10 +13,10 @@ class TransactionHistoryTest {
     @Test
     fun `should create transaction history successfully`() {
         // given
-        val wallet = Wallet(id = 1L, balance = BigDecimal("1000.00"))
+        val wallet = Wallet(id = 1L, balance = Money(BigDecimal("1000.00")))
         val transactionId = "TXN-001"
-        val withdrawalAmount = BigDecimal("100.00")
-        val remainingBalance = BigDecimal("900.00")
+        val withdrawalAmount = Money(BigDecimal("100.00"))
+        val remainingBalance = Money(BigDecimal("900.00"))
 
         // when
         val history = TransactionHistory(
@@ -37,20 +38,20 @@ class TransactionHistoryTest {
     @Test
     fun `should validate data class equality`() {
         // given
-        val wallet = Wallet(id = 1L, balance = BigDecimal("1000.00"))
+        val wallet = Wallet(id = 1L, balance = Money(BigDecimal("1000.00")))
         val history1 = TransactionHistory(
             id = 1L,
             wallet = wallet,
             transactionId = "TXN-001",
-            withdrawalAmount = BigDecimal("100.00"),
-            remainingBalance = BigDecimal("900.00")
+            withdrawalAmount = Money(BigDecimal("100.00")),
+            remainingBalance = Money(BigDecimal("900.00"))
         )
         val history2 = TransactionHistory(
             id = 1L,
             wallet = wallet,
             transactionId = "TXN-001",
-            withdrawalAmount = BigDecimal("100.00"),
-            remainingBalance = BigDecimal("900.00")
+            withdrawalAmount = Money(BigDecimal("100.00")),
+            remainingBalance = Money(BigDecimal("900.00"))
         )
 
         // when & then

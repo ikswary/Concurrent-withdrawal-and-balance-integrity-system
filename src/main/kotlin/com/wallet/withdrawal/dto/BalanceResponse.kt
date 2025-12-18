@@ -1,7 +1,7 @@
 package com.wallet.withdrawal.dto
 
 import com.wallet.withdrawal.domain.Wallet
-import java.math.BigDecimal
+import com.wallet.withdrawal.domain.vo.Money
 import java.time.LocalDateTime
 
 /**
@@ -9,7 +9,7 @@ import java.time.LocalDateTime
  */
 data class BalanceResponse(
     val walletId: Long,
-    val balance: BigDecimal,
+    val balance: Money,
     val updatedAt: LocalDateTime
 ) {
     companion object {

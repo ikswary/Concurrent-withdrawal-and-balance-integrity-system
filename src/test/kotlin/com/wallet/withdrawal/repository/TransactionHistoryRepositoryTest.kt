@@ -2,6 +2,7 @@ package com.wallet.withdrawal.repository
 
 import com.wallet.withdrawal.domain.TransactionHistory
 import com.wallet.withdrawal.domain.Wallet
+import com.wallet.withdrawal.domain.vo.Money
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -25,12 +26,12 @@ class TransactionHistoryRepositoryTest {
     @Test
     fun `should save and find transaction history`() {
         // given
-        val wallet = walletRepository.save(Wallet(balance = BigDecimal("1000.00")))
+        val wallet = walletRepository.save(Wallet(balance = Money(BigDecimal("1000.00"))))
         val history = TransactionHistory(
             wallet = wallet,
             transactionId = "TXN-001",
-            withdrawalAmount = BigDecimal("100.00"),
-            remainingBalance = BigDecimal("900.00")
+            withdrawalAmount = Money(BigDecimal("100.00")),
+            remainingBalance = Money(BigDecimal("900.00"))
         )
 
         // when
@@ -46,12 +47,12 @@ class TransactionHistoryRepositoryTest {
     @Test
     fun `should find transaction history by transaction id`() {
         // given
-        val wallet = walletRepository.save(Wallet(balance = BigDecimal("1000.00")))
+        val wallet = walletRepository.save(Wallet(balance = Money(BigDecimal("1000.00"))))
         val history = TransactionHistory(
             wallet = wallet,
             transactionId = "TXN-001",
-            withdrawalAmount = BigDecimal("100.00"),
-            remainingBalance = BigDecimal("900.00")
+            withdrawalAmount = Money(BigDecimal("100.00")),
+            remainingBalance = Money(BigDecimal("900.00"))
         )
         transactionHistoryRepository.save(history)
 
@@ -76,12 +77,12 @@ class TransactionHistoryRepositoryTest {
     @Test
     fun `should access wallet id property`() {
         // given
-        val wallet = walletRepository.save(Wallet(balance = BigDecimal("1000.00")))
+        val wallet = walletRepository.save(Wallet(balance = Money(BigDecimal("1000.00"))))
         val history = TransactionHistory(
             wallet = wallet,
             transactionId = "TXN-001",
-            withdrawalAmount = BigDecimal("100.00"),
-            remainingBalance = BigDecimal("900.00")
+            withdrawalAmount = Money(BigDecimal("100.00")),
+            remainingBalance = Money(BigDecimal("900.00"))
         )
         val savedHistory = transactionHistoryRepository.save(history)
 

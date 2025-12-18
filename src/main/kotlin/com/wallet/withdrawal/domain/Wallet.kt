@@ -1,7 +1,7 @@
 package com.wallet.withdrawal.domain
 
+import com.wallet.withdrawal.domain.vo.Money
 import jakarta.persistence.*
-import java.math.BigDecimal
 import java.time.LocalDateTime
 
 /**
@@ -16,7 +16,7 @@ data class Wallet(
     val id: Long? = null,
 
     @Column(nullable = false, precision = 19, scale = 2)
-    var balance: BigDecimal,
+    var balance: Money,
 
     @Column(nullable = false, updatable = false)
     val createdAt: LocalDateTime = LocalDateTime.now(),

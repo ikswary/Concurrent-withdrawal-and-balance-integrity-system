@@ -3,6 +3,7 @@ package com.wallet.withdrawal.service
 import com.wallet.withdrawal.domain.Wallet
 import com.wallet.withdrawal.domain.exception.InsufficientBalanceException
 import com.wallet.withdrawal.domain.exception.WalletNotFoundException
+import com.wallet.withdrawal.domain.vo.Money
 import com.wallet.withdrawal.repository.TransactionHistoryRepository
 import com.wallet.withdrawal.repository.WalletRepository
 import org.junit.jupiter.api.Assertions.*
@@ -35,7 +36,7 @@ class WalletTransactionServiceTest {
     fun setUp() {
         // Create a test wallet
         val wallet = Wallet(
-            balance = BigDecimal("1000.00")
+            balance = Money(BigDecimal("1000.00"))
         )
         val savedWallet = walletRepository.save(wallet)
         testWalletId = savedWallet.id!!
@@ -58,7 +59,7 @@ class WalletTransactionServiceTest {
 
         // Verify wallet balance updated
         val wallet = walletRepository.findById(testWalletId).get()
-        assertEquals(BigDecimal("900.00"), wallet.balance)
+        assertEquals(Money(BigDecimal("900.00")), wallet.balance)
 
         // Verify transaction history created
         val history = transactionHistoryRepository.findByTransactionId(transactionId)
@@ -96,6 +97,6 @@ class WalletTransactionServiceTest {
 
         // Verify wallet balance not changed
         val wallet = walletRepository.findById(testWalletId).get()
-        assertEquals(BigDecimal("1000.00"), wallet.balance)
+        assertEquals(Money(BigDecimal("1000.00")), wallet.balance)
     }
 }
