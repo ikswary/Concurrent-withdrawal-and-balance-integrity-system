@@ -1,10 +1,10 @@
-package com.wallet.withdrawal.service
+package com.wallet.withdrawal.service.wallet
 
 import com.wallet.withdrawal.domain.TransactionHistory
 import com.wallet.withdrawal.domain.exception.InsufficientBalanceException
 import com.wallet.withdrawal.domain.exception.WalletNotFoundException
 import com.wallet.withdrawal.domain.vo.Money
-import com.wallet.withdrawal.dto.WithdrawalResponse
+import com.wallet.withdrawal.service.wallet.dto.WithdrawalResponse
 import com.wallet.withdrawal.repository.TransactionHistoryRepository
 import com.wallet.withdrawal.repository.WalletRepository
 import org.springframework.stereotype.Service
@@ -54,6 +54,6 @@ class WalletTransactionService(
         )
         transactionHistoryRepository.save(history)
 
-        return WithdrawalResponse.from(history)
+        return WithdrawalResponse.Companion.from(history)
     }
 }

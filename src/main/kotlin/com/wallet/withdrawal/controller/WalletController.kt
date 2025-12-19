@@ -1,10 +1,9 @@
 package com.wallet.withdrawal.controller
 
-import com.wallet.withdrawal.dto.BalanceResponse
-import com.wallet.withdrawal.dto.WithdrawalRequest
-import com.wallet.withdrawal.dto.WithdrawalResponse
-import com.wallet.withdrawal.service.WalletService
-import org.springframework.http.HttpStatus
+import com.wallet.withdrawal.service.wallet.dto.BalanceResponse
+import com.wallet.withdrawal.service.wallet.dto.WithdrawalRequest
+import com.wallet.withdrawal.service.wallet.dto.WithdrawalResponse
+import com.wallet.withdrawal.service.wallet.WalletService
 import org.springframework.web.bind.annotation.*
 
 /**

@@ -1,4 +1,4 @@
-package com.wallet.withdrawal.dto
+package com.wallet.withdrawal.service.wallet.dto
 
 import java.time.LocalDateTime
 

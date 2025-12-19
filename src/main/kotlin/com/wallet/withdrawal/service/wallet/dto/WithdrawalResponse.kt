@@ -1,4 +1,4 @@
-package com.wallet.withdrawal.dto
+package com.wallet.withdrawal.service.wallet.dto
 
 import com.wallet.withdrawal.domain.TransactionHistory
 import com.wallet.withdrawal.domain.vo.Money

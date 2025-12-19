@@ -4,7 +4,7 @@ import com.wallet.withdrawal.domain.Wallet
 import com.wallet.withdrawal.domain.vo.Money
 import com.wallet.withdrawal.repository.TransactionHistoryRepository
 import com.wallet.withdrawal.repository.WalletRepository
-import com.wallet.withdrawal.service.WalletService
+import com.wallet.withdrawal.service.wallet.WalletService
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach

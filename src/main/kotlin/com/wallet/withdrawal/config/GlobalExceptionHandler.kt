@@ -1,12 +1,12 @@
-package com.wallet.withdrawal.controller
+package com.wallet.withdrawal.config
 
 import com.wallet.withdrawal.domain.exception.CommonException
-import com.wallet.withdrawal.dto.ErrorResponse
+import com.wallet.withdrawal.service.wallet.dto.ErrorResponse
+import jakarta.servlet.http.HttpServletRequest
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice
-import jakarta.servlet.http.HttpServletRequest
 
 /**
  * Global Exception Handler

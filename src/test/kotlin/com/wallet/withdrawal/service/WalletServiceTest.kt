@@ -6,6 +6,7 @@ import com.wallet.withdrawal.domain.exception.WalletNotFoundException
 import com.wallet.withdrawal.domain.vo.Money
 import com.wallet.withdrawal.repository.TransactionHistoryRepository
 import com.wallet.withdrawal.repository.WalletRepository
+import com.wallet.withdrawal.service.wallet.WalletService
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test

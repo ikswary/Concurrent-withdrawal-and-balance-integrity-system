@@ -4,8 +4,8 @@ import com.wallet.withdrawal.domain.Wallet
 import com.wallet.withdrawal.domain.vo.Money
 import com.wallet.withdrawal.repository.TransactionHistoryRepository
 import com.wallet.withdrawal.repository.WalletRepository
-import com.wallet.withdrawal.service.WalletService
-import com.wallet.withdrawal.service.WalletTransactionService
+import com.wallet.withdrawal.service.wallet.WalletService
+import com.wallet.withdrawal.service.wallet.WalletTransactionService
 import com.wallet.withdrawal.service.lock.LocalLockManager
 import com.wallet.withdrawal.service.lock.NoLockManager
 import org.junit.jupiter.api.Assertions.*

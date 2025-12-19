@@ -1,8 +1,8 @@
-package com.wallet.withdrawal.service
+package com.wallet.withdrawal.service.wallet
 
 import com.wallet.withdrawal.domain.exception.WalletNotFoundException
-import com.wallet.withdrawal.dto.BalanceResponse
-import com.wallet.withdrawal.dto.WithdrawalResponse
+import com.wallet.withdrawal.service.wallet.dto.BalanceResponse
+import com.wallet.withdrawal.service.wallet.dto.WithdrawalResponse
 import com.wallet.withdrawal.repository.TransactionHistoryRepository
 import com.wallet.withdrawal.repository.WalletRepository
 import com.wallet.withdrawal.service.lock.LockManager
@@ -33,7 +33,7 @@ class WalletService(
         return lockManager.executeWithLock(lockKey) {
             // 락 내부에서 멱등성 체크: 이미 처리된 거래인지 확인
             transactionHistoryRepository.findByTransactionId(transactionId)?.let {
-                return@executeWithLock WithdrawalResponse.from(it)
+                return@executeWithLock WithdrawalResponse.Companion.from(it)
             }
 
             // 출금 실행
@@ -49,6 +49,6 @@ class WalletService(
         val wallet = walletRepository.findById(walletId)
             .orElseThrow { WalletNotFoundException(walletId) }
 
-        return BalanceResponse.from(wallet)
+        return BalanceResponse.Companion.from(wallet)
     }
 }
