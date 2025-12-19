@@ -24,18 +24,19 @@ class WalletService(
 
     /**
      * 출금 처리
-     * - 멱등성 보장 (transactionId 중복 체크)
      * - 분산 락을 통한 동시성 제어
+     * - 락 내부에서 멱등성 보장 (transactionId 중복 체크)
      */
     fun withdraw(walletId: Long, transactionId: String, amount: BigDecimal): WithdrawalResponse {
-        // 멱등성 체크: 이미 처리된 거래인지 확인
-        transactionHistoryRepository.findByTransactionId(transactionId)?.let {
-            return WithdrawalResponse.from(it)
-        }
-
-        // 분산 락 획득 및 출금 실행
         val lockKey = "wallet:$walletId"
+
         return lockManager.executeWithLock(lockKey) {
+            // 락 내부에서 멱등성 체크: 이미 처리된 거래인지 확인
+            transactionHistoryRepository.findByTransactionId(transactionId)?.let {
+                return@executeWithLock WithdrawalResponse.from(it)
+            }
+
+            // 출금 실행
             walletTransactionService.executeWithdrawal(walletId, transactionId, amount)
         }
     }
