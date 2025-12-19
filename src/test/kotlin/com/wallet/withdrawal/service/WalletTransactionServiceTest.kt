@@ -54,8 +54,8 @@ class WalletTransactionServiceTest {
         // then
         assertEquals(testWalletId, response.walletId)
         assertEquals(transactionId, response.transactionId)
-        assertEquals(amount, response.withdrawalAmount)
-        assertEquals(BigDecimal("900.00"), response.remainingBalance)
+        assertEquals(Money(amount), response.withdrawalAmount)
+        assertEquals(Money(BigDecimal("900.00")), response.remainingBalance)
 
         // Verify wallet balance updated
         val wallet = walletRepository.findById(testWalletId).get()
